@@ -1,0 +1,22 @@
+<h2>Por Capital</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <!-- escucho el evento onEnter entregado del componente hijo y 
+      le paso el parametro a la funcion buscar() del 
+      componente padre(por-pais) -->
+    <app-pais-input (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)" placeholder="Buscar Capital..."></app-pais-input>
+  </div>
+</div>
+
+<hr />
+<div *ngIf="hayError" class="alert alert-danger">No se encontró nada con el término {{termino}}</div>
+<div *ngIf="paises.length > 0" class="row">
+  <div class="col">
+    <!-- Envio variable paises con los datos al componente hijo -->
+    <app-pais-tabla [paises] = "paises" ></app-pais-tabla>
+  </div>
+</div>
+
+
